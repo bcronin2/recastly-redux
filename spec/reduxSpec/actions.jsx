@@ -1,5 +1,12 @@
 import dummyData from '../../src/data/exampleVideoData.js';
-import { mockStore, mockReducer, mockYouTubeApi, changeVideo, changeVideoList, handleVideoSearch } from './reduxMocks.jsx';
+import {
+  mockStore,
+  mockReducer,
+  mockYouTubeApi,
+  changeVideo,
+  changeVideoList,
+  handleVideoSearch
+} from './reduxMocks.jsx';
 
 var apiCall;
 
@@ -41,14 +48,16 @@ describe('Action dispatchers', function() {
       expect(changeVideoList.firstCall.returnValue).to.be.an('object');
     });
     it('should return an object with a "type" key equal to "CHANGE_VIDEO_LIST"', function() {
-      expect(changeVideoList.firstCall.returnValue.type).to.equal('CHANGE_VIDEO_LIST');
+      expect(changeVideoList.firstCall.returnValue.type).to.equal(
+        'CHANGE_VIDEO_LIST'
+      );
     });
     it('should return an object with a "videos" key equal to the videos parameter', function() {
       expect(changeVideoList.firstCall.returnValue.videos).to.equal(dummyData);
     });
   });
   describe('handleVideoSearch', function() {
-    before(function () {
+    before(function() {
       mockReducer.reset();
       changeVideo.reset();
       changeVideoList.reset();
@@ -64,10 +73,9 @@ describe('Action dispatchers', function() {
     it('should take a query parameter', function() {
       expect(handleVideoSearch.length).to.equal(1);
     });
-    it('should make a call to the youtube API', function(done) {
+    it('should make a call to the youtube API', function() {
       $(document).ajaxSuccess(function(event, request, options) {
         expect(apiCall.count).to.equal(1);
-        done();
       });
     });
     it('should dispatch changeVideo', function() {
