@@ -1,8 +1,9 @@
 var currentVideoReducer = (state = null, action) => {
+  var newState = state;
   if (action.type === 'CHANGE_VIDEO') {
-    state = action.video;
+    newState = action.video;
   }
-  return state;
+  return newState;
 };
 
 export default currentVideoReducer;

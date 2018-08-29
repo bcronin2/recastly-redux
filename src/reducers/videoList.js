@@ -1,8 +1,9 @@
 var videoListReducer = (state = [], action) => {
+  var newState = state;
   if (action.type === 'CHANGE_VIDEO_LIST') {
-    state = action.videos;
+    newState = action.videos;
   }
-  return state;
+  return newState;
 };
 
 export default videoListReducer;
